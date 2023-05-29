@@ -157,33 +157,31 @@ Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board, int y, int x)
     return board;
 }
 
-/*
+
 void cout_generation(Eigen::MatrixXi board,int y, int x){
     Eigen::MatrixXi trimingboard;
     int max_gen;
 
     for(;;){
-        std::cout << "何世代まで進めるか決めてください : ";
-        std::cin >> max_gen;
-        if(std::cin>>max_gen){
-
-            for(int i = 1 ;i <= max_gen; i++){
-                board = next_result(board);
-                std::cout << i << "世代";
-                trimingboard = board.block(1,1,y,x);
-                std::cout << trimingboard  << "\n\n";
-            }
-            break;
-        }
-        else{
+        std::cout << "何世代まで進めるか決めてください : "<<std::endl;
+        if (!(std::cin >> max_gen))
+        {
             std::cout << "整数入力をお願いします" << std::endl;
-                    std::cin.clear();
-                    std::cin.ignore(999, '\n');
-                    continue;
+            std::cin.clear();
+            std::cin.ignore(999, '\n');
+            continue;
         }
+        for(int i = 1 ;i <= max_gen; i++){
+            board = next_result(board);
+            std::cout << i << "世代\n";
+            trimingboard = board.block(1,1,y,x);
+            std::cout << trimingboard  << "\n\n";
+            }
+        break;
+        }
+
     }
-}
-*/
+
 
 int main()
 {
@@ -202,4 +200,6 @@ int main()
     std::cout << trimingboard << "\n\n";
 
     onboard = first_liveplace(onboard, y, x);
+    cout_generation(onboard,y,x);
+
 }
