@@ -5,12 +5,12 @@
 
 
 
-Eigen::MatrixXf board(int n,int m){
-Eigen::MatrixXf board = Eigen::MatrixXf::Zero(n,m);
+Eigen::MatrixXi board(int n,int m){
+Eigen::MatrixXi board = Eigen::MatrixXi::Zero(n,m);
 return board; 
 }
 
-int live_judge(Eigen::MatrixXf board,int n, int m)
+int live_judge(Eigen::MatrixXi board,int n, int m)
 {
     int count = 0; 
     for (int i = n-1; i <= n+1; i++){
@@ -23,7 +23,7 @@ int live_judge(Eigen::MatrixXf board,int n, int m)
     return count;
 }
 
-int liveordie(Eigen::MatrixXf board,int n,int m,int count){
+int liveordie(Eigen::MatrixXi board,int n,int m,int count){
     if(board(n,m)==1){
         if(count == 3 || count == 4){
             return 1;
@@ -64,7 +64,7 @@ int liveordie_test(int board,int n,int m,int count){
 
 
 
- Eigen::MatrixXf onegeneration(Eigen::MatrixXf board,int n,int m, int num){
+ Eigen::MatrixXi onegeneration(Eigen::MatrixXi board,int n,int m, int num){
     if (num == 0){
         board(n,m) = 0;
         return board;
@@ -77,8 +77,8 @@ int liveordie_test(int board,int n,int m,int count){
 }
 
 
-Eigen::MatrixXf next_result(Eigen::MatrixXf board){
-Eigen::MatrixXf nextboard = board;
+Eigen::MatrixXi next_result(Eigen::MatrixXi board){
+Eigen::MatrixXi nextboard = board;
 int r = board.rows();
 int c = board.cols();
 int count;
@@ -96,7 +96,7 @@ return nextboard;
 /*
 int main(){
 //create board
-Eigen::MatrixXf onboard;
+Eigen::MatrixXi onboard;
 onboard = board(7,7);
 std::cout <<"0世代" << "\n"; 
 std::cout << onboard << "\n\n"; 
