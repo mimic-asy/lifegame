@@ -93,14 +93,44 @@ for (int i = 1; i < c-1; i++){
 return nextboard;
 }
 
-/*
+
+Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board){
+    int startx = 0;
+    int starty = 0;
+        while (true)
+        {
+            std::cout << "開始点のX座標を入力してください(終了: -1) x :";
+            std::cin >> startx;
+            if(startx == -1){
+                break;
+            }
+            std::cout << "開始点のY座標を入力してください(終了: -1) y :";
+            std::cin >> starty; 
+            if(starty == -1){
+                break;
+            }
+            board(starty,startx) = 1;
+
+        }
+    return board;
+}
+
+
 int main(){
 //create board
 Eigen::MatrixXi onboard;
-onboard = board(7,7);
+int x,y;
+std::cout << "盤面の大きさを決めてください x : ";
+std::cin >> x;
+std::cout << "盤面の大きさを決めてください y : ";
+std::cin >> y;
+
+onboard = board(y,x);
 std::cout <<"0世代" << "\n"; 
 std::cout << onboard << "\n\n"; 
-onboard(1,2) = 1; onboard(2,1) = 1; onboard(2,2) = 1;
+
+onboard = first_liveplace(onboard);
+
 std::cout <<"1世代" << "\n"; 
 std::cout << onboard << "\n\n"; 
 onboard = next_result(onboard);
@@ -111,4 +141,3 @@ std::cout <<"3世代" << "\n";
 std::cout << onboard << "\n\n"; 
 
 }
-*/
