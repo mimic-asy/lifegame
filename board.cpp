@@ -94,22 +94,48 @@ return nextboard;
 }
 
 
-Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board){
+Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board,int y, int x){
     int startx = 0;
     int starty = 0;
         while (true)
         {
             std::cout << "開始点のX座標を入力してください(終了: -1) x :";
             std::cin >> startx;
-            if(startx == -1){
-                break;
+            if(std::cin >> startx){
+                if(startx == 0 || startx > x){
+                    std::cout << "エリア外です" << std::endl;
+                    continue; 
+                }
+                if(startx == -1){
+                    break;
+                }
+            }
+            else{   
+                std::cout << "整数入力をお願いします" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(999, '\n');
+                continue;
             }
             std::cout << "開始点のY座標を入力してください(終了: -1) y :";
             std::cin >> starty; 
-            if(starty == -1){
-                break;
+            if(std::cin >> starty){
+                if(starty == 0 || starty > x){
+                    std::cout << "エリア外です" << std::endl;
+                    continue; 
+                }
+                if(starty == -1){
+                    break;
+                }
+                
+                board(starty,startx) = 1;
             }
-            board(starty,startx) = 1;
+            else{
+                std::cout << "整数入力をお願いします" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(999, '\n');
+                continue;
+                
+            }
 
         }
     return board;
@@ -118,26 +144,30 @@ Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board){
 
 int main(){
 //create board
-Eigen::MatrixXi onboard;
+Eigen::MatrixXi onboard,trimingboard;
 int x,y;
 std::cout << "盤面の大きさを決めてください x : ";
 std::cin >> x;
 std::cout << "盤面の大きさを決めてください y : ";
 std::cin >> y;
 
-onboard = board(y,x);
+onboard = board(y+2,x+2);
 std::cout <<"0世代" << "\n"; 
-std::cout << onboard << "\n\n"; 
+trimingboard = onboard.block(1,1,y,x);
+std::cout << trimingboard << "\n\n"; 
 
-onboard = first_liveplace(onboard);
+onboard = first_liveplace(onboard,y,x);
 
 std::cout <<"1世代" << "\n"; 
-std::cout << onboard << "\n\n"; 
+trimingboard = onboard.block(1,1,y,x);
+std::cout << trimingboard << "\n\n"; 
 onboard = next_result(onboard);
-std::cout <<"2世代" << "\n"; 
-std::cout << onboard << "\n\n"; 
+std::cout <<"2世代" << "\n";
+trimingboard = onboard.block(1,1,y,x); 
+std::cout << trimingboard  << "\n\n"; 
 onboard = next_result(onboard);
 std::cout <<"3世代" << "\n"; 
-std::cout << onboard << "\n\n"; 
+trimingboard = onboard.block(1,1,y,x);
+std::cout << trimingboard  << "\n\n"; 
 
 }
