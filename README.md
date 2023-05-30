@@ -16,11 +16,13 @@
     0 0 0
 
  # 実行方法
-    $ git clone git@github.com:mimic-asy/lifegame.git
-    $ mkdir build
-    $ cmake ..
-    $ make
-    S lifegame_test
+    git clone git@github.com:mimic-asy/lifegame.git
+    cd lifegame
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ./lifegame_test
 
 ## どのように遊ぶか
 
