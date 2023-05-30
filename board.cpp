@@ -29,7 +29,7 @@ int liveordie(Eigen::MatrixXi board, int n, int m, int count)
 {
     if (board(n, m) == 1)
     {
-        if (count == 3 || count == 4)
+        if (count == 3 || count == 5)
         {
             return 1;
         }
@@ -55,7 +55,7 @@ int liveordie_test(int board, int n, int m, int count)
 {
     if (board == 1)
     {
-        if (count == 3 || count == 4)
+        if (count == 3 || count == 5)
         {
             return 1;
         }
