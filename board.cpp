@@ -183,6 +183,19 @@ void cout_generation(Eigen::MatrixXi board,int y, int x){
     }
 
 
+Eigen::MatrixXi printnumber(Eigen::MatrixXi board,int y,int x){
+for(int n = 0; n < x+1; n++){
+    std::cout << n << " ";
+}
+std::cout<< " "<< std::endl;
+for(int i = 0; i < y+1; i++){
+    board(i,0) = i;
+}
+
+return board;
+}
+
+
 int main()
 {
     // create board
@@ -196,7 +209,8 @@ int main()
     onboard = board(y + 2, x + 2);
     std::cout << "0世代"
               << "\n";
-    trimingboard = onboard.block(1, 1, y, x);
+    onboard = printnumber(onboard,y,x);
+    trimingboard = onboard.block(1, 0, y, x+1);
     std::cout << trimingboard << "\n\n";
 
     onboard = first_liveplace(onboard, y, x);
