@@ -128,7 +128,7 @@ Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board, int y, int x)
         {
             break;
         }
-        if (startx < 0 || startx >= x || startx == 0)
+        if (startx < 0 || startx > x || startx == 0)
         {
             std::cout << "エリア外です" << std::endl;
             continue;
@@ -146,7 +146,7 @@ Eigen::MatrixXi first_liveplace(Eigen::MatrixXi board, int y, int x)
         {
             break;
         }
-        if (starty < 0 || starty >= y|| starty == 0)
+        if (starty < 0 || starty > y|| starty == 0)
         {
             std::cout << "エリア外です" << std::endl;
             continue;
