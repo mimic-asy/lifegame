@@ -5,9 +5,8 @@
 指定した手先までの盤面を表示します。
 
  # 実行するには
-１・Cmake .を行う
-２・makeを行う
-３・./lifegame_testを行う
+https://qiita.com/mimic-asy/items/e70e2640e9f16dd1ea95
 
+上記サイトに実行方法あり
 
 
