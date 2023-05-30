@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-add_compile_options(-Werror -Wall)
+add_compile_options(-Werror -Wall -g)
 project(board)
 
 enable_testing() 

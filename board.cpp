@@ -18,6 +18,7 @@ int live_judge(Eigen::MatrixXi board, int n, int m)
         {
             if (board(i, k) == 1)
             {
+ 
                 count++;
             }
         }
@@ -98,10 +99,10 @@ Eigen::MatrixXi next_result(Eigen::MatrixXi board)
     int c = board.cols();
     int count;
     int num;
-    for (int i = 1; i < c - 1; i++)
+    for (int i = 1; i < r - 1; i++)
     {
-        for (int k = 1; k < r - 1; k++)
-        {
+        for (int k = 1; k < c - 1; k++)
+        { 
             count = live_judge(board, i, k);
             num = liveordie(board, i, k, count);
             nextboard = onegeneration(nextboard, i, k, num);
