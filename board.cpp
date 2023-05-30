@@ -199,7 +199,7 @@ return board;
 int main()
 {
     // create board
-    Eigen::MatrixXi onboard, trimingboard;
+    Eigen::MatrixXi onboard, trimingboard,only_cout;
     int x, y;
     std::cout << "盤面の大きさを決めてください x : ";
     std::cin >> x;
@@ -207,13 +207,13 @@ int main()
     std::cin >> y;
 
     onboard = board(y + 2, x + 2);
-    std::cout << "0世代"<< "\n";
-
-    onboard = printnumber(onboard,y,x);
-    trimingboard = onboard.block(0,0,y+1,x+1);
+    only_cout = printnumber(onboard,y,x);
+    trimingboard = only_cout.block(0,0,y+1,x+1);
     std::cout << trimingboard << "\n\n";
-
     onboard = first_liveplace(onboard, y, x);
+    std::cout << "0世代"<< "\n";
+    trimingboard = onboard.block(1,1,y,x);
+    std::cout << trimingboard  << "\n\n";
     cout_generation(onboard,y,x);
 
 }
