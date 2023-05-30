@@ -17,6 +17,7 @@
 
  # 実行方法
  ターミナルに以下のコマンドを打ち込むと実行できます
+ 
     git clone git@github.com:mimic-asy/lifegame.git
     cd lifegame
     mkdir build
